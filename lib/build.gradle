@@ -32,23 +32,29 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+group = 'org.example'
+version = '1.0.0'
+
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = 'org.example'
+            // groupId = 'org.example'
             artifactId = 'library'
-            version = '1.0.0'
+            // version = '1.0.0'
             from components.java
         }
     }
-    // repositories {
-    //     maven {
-    //     name = "OSSRH"
-    //     url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-    //     credentials {
-    //         username = "xkonishi"
-    //         password = "zaq12wsxCDE#$RFV"
-    //     }
-    //     }
-    // }
+    repositories {
+        maven {
+            url = '../../shared-repo'
+        }
+        // maven {
+        //     name = 'OSSRH'
+        //     url = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+        //     credentials {
+        //         username = 'xkonishi'
+        //         password = 'zaq12wsxCDE#$RFV'
+        //     }
+        // }
+    }
 }
