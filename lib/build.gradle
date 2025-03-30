@@ -33,7 +33,7 @@ tasks.named('test') {
 }
 
 group = 'org.example'
-version = '1.0.0'
+version = '1.0.0-SNAPSHOT'
 
 publishing {
     publications {
@@ -48,13 +48,14 @@ publishing {
         maven {
             url = '../../shared-repo'
         }
-        // maven {
-        //     name = 'OSSRH'
-        //     url = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
-        //     credentials {
-        //         username = 'xkonishi'
-        //         password = 'zaq12wsxCDE#$RFV'
-        //     }
-        // }
+        maven {
+            url = uri('http://localhost:8081/repository/maven-snapshots/')
+            // url = uri('http://localhost:8081/repository/maven-releases/')
+            allowInsecureProtocol = true
+            credentials {
+                username = 'admin'
+                password = 'admin123'
+            }
+        }
     }
 }
